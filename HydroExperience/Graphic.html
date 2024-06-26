@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydro Experience - Gráficos</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,700&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="responsive.css" rel="stylesheet" />
+    <link href="inicio.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        #charts {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+          
+        }
+
+        #chartUmidade, #chartTemperatura, #chartDistancia {
+            width: 600px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero_area" style="height: 100vh;
+    background-image: url(1.png);
+    background-size: cover;
+  
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: relative;
+  ">
+        <div class="nav-container">
+            <div class="nav-row">
+                <div class="nav-logo">
+                    <img src="Hydro_Experience.png" alt="Logo">
+                    <a href="index.html" style="font-size: 27px;     display: inline-block;
+                    list-style: none;
+                    text-decoration: none;
+                    color: blue;
+                    transition: opacity .125s linear;">Hydro Experience</a>
+                </div>
+                <div class="nav-controls">
+                    <!-- Botão de voltar -->
+                    <a href="index.html" class="menu_button" style="color: black;"><i class="fas fa-arrow-left"></i> Voltar</a>
+                </div>
+            </div>
+        </div>
+        <section class="slider_section">
+            <div class="col-md-8 offset-md-1">
+                <div class="detail-box">
+                    <div class="number"></div>
+                    <h1>Hydro <br><span>Experience</span></h1>
+                    <p style="color: aliceblue;">
+                        Descubra o ambiente perfeito para suas plantas com gráficos detalhados de umidade, temperatura e distância.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="charts" style="height: 100vh;
+    background-image: url(2.png);
+    background-size: cover;
+  ">
+        <div id="chartUmidade"></div>   
+        <div id="chartTemperatura"></div>   
+        <div id="chartDistancia"></div>
+    </div>
+
+    <script>
+        google.charts.load('current', { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            const dataUmidade = new google.visualization.DataTable();
+            dataUmidade.addColumn('string', 'Tempo');
+            dataUmidade.addColumn('number', 'Umidade (%)');
+
+            const dataTemperatura = new google.visualization.DataTable();
+            dataTemperatura.addColumn('string', 'Tempo');
+            dataTemperatura.addColumn('number', 'Temperatura (°C)');
+
+            const dataDistancia = new google.visualization.DataTable();
+            dataDistancia.addColumn('string', 'Tempo');
+            dataDistancia.addColumn('number', 'Distância (cm)');
+
+            const options = {
+                title: 'Dados em Tempo Real',
+                height: 300,
+                width: 600,
+                legend: { position: 'bottom' }
+            };
+
+            const chartUmidade = new google.visualization.LineChart(document.getElementById('chartUmidade'));
+            const chartTemperatura = new google.visualization.LineChart(document.getElementById('chartTemperatura'));
+            const chartDistancia = new google.visualization.ColumnChart(document.getElementById('chartDistancia'));
+
+            function fetchDataAndDrawCharts() {
+                // Mock data (replace with actual data fetching mechanism)
+                const umidade = Math.max(80, Math.min(81, Math.random() * 100)); // Limite de 0 a 100%
+                const temperatura = Math.max(25, Math.min(25.2, Math.random() * 50)); // Limite de 0 a 50°C
+                const distancia = Math.max(30, Math.min(50, Math.random() * 200)); // Limite de 0 a 200 cm
+
+                const timestamp = new Date().toLocaleTimeString();  // Hora atual para o eixo x
+
+                // Adiciona dados aos respectivos gráficos
+                dataUmidade.addRow([timestamp, umidade]);
+                dataTemperatura.addRow([timestamp, temperatura]);
+                dataDistancia.addRow([timestamp, distancia]);
+
+                // Desenha os gráficos com os dados atualizados
+                chartUmidade.draw(dataUmidade, options);
+                chartTemperatura.draw(dataTemperatura, options);
+                chartDistancia.draw(dataDistancia, options);
+            }
+
+            setInterval(fetchDataAndDrawCharts, 2000);  // Atualiza a cada 2 segundos
+        }
+    </script>
+</body>
+</html>

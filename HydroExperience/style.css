@@ -1,0 +1,336 @@
+/* Importando a fonte Lato */
+@import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
+*{font-family: Arial, sans-serif ;}
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* overflow: hidden;
+     Evita rolagem */
+    color: #666666;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    /* Permite rolagem dentro do container */
+}
+
+.menu_bar {
+    height: 15%;
+    width: 100%;
+    background-color: rgb(48, 155, 59);
+    display: flex;
+    align-items: center;
+
+}
+
+.logo {
+    height: 90%;
+    width: 10%;
+    margin: 5px;
+    background-color: rgb(48, 155, 59);
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.menu_bar h1 {
+    margin-left: 20px;
+    margin-right: auto;
+    color: rgb(0, 200, 250);
+}
+
+.menu_button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: rgb(48, 155, 59);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.menu_button i {
+    margin-right: 5px;
+}
+
+.menu_button:hover {
+    background-color: rgb(41, 116, 49);
+}
+
+.menu_bar i.fas {
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    margin-left: 20px;
+}
+
+.cards {
+
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    background-image: url(2.png);
+    background-size: cover;
+    /* Ajusta a imagem para cobrir o container */
+}
+
+.card_umidade,
+.card_temperatura,
+.card_distancia {
+    background-color: rgba(153, 229, 153, 0.4);
+    /* Fundo semi-transparente com cor semelhante ao menu */
+    height: 50%;
+    /* Altura dos cartões */
+    width: 28%;
+    /* Largura dos cartões */
+    border-radius: 15px;
+    /* Bordas arredondadas */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    color: rgba(0, 0, 0, 0.8);
+    /* Cor do texto */
+    backdrop-filter: blur(5px);
+    /* Adiciona efeito de desfoque */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 255, 255, 0.8);
+    /* Sombra para o card com luz branca */
+}
+
+.card_umidade:hover,
+.card_temperatura:hover,
+.card_distancia:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 1);
+    /* Efeito de luz branca mais intenso ao passar o mouse */
+}
+
+/* Estilos para o botão de alerta */
+.botao_alerta {
+    width: 180px;
+    height: 60px;
+    /* Ajustando a altura para 60px */
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #da4f4f;
+    outline: none;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 100;
+    transition: background 1s ease-in-out;
+    overflow: hidden;
+    /* Adicionado para garantir que nada saia dos limites do botão */
+}
+
+.botao_alerta svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    fill: none;
+    stroke: #fff;
+    stroke-dasharray: 150 480;
+    stroke-dashoffset: 150;
+    transition: stroke-dashoffset 1s ease-in-out;
+    width: 100%;
+    /* Garantir que o SVG ocupe toda a largura do botão */
+    height: 100%;
+    /* Garantir que o SVG ocupe toda a altura do botão */
+}
+
+.botao_alerta:hover {
+    background: #da4f4f;
+}
+
+.botao_alerta:hover svg {
+    stroke-dashoffset: -480;
+}
+
+.botao_alerta span {
+    z-index: 1;
+    /* Garantir que o texto esteja acima do SVG */
+    color: white;
+    /* Cor do texto */
+    font-size: 18px;
+    /* Tamanho do texto */
+    font-weight: 100;
+    /* Peso da fonte */
+}
+
+.titulo_centralizado {
+    margin: 0;
+    padding: 10px;
+    font-size: 35px;
+}
+
+.numero_e_parametro {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.numero_centralizado {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.parametro {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+
+
+/* Define a animação que alterna entre azul e verde */
+@keyframes changeColor {
+    0% {
+        color: rgb(31, 205, 228);
+    }
+
+    70% {
+        color: rgb(7, 255, 7);
+    }
+
+    100% {
+        color: rgb(31, 205, 228);
+    }
+}
+
+/* Aplica a animação aos elementos h1 */
+.menu_bar h1 {
+    animation: changeColor 2s infinite;
+}
+
+a {
+    display: inline-block;
+    list-style: none;
+    text-decoration: none;
+    color:#88ff8e;
+    transition: opacity .125s linear;
+}
+
+a:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+.first-container {
+    background: url('imagemHydro.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-container {
+    height: 75px;
+    padding-top: 10px;
+    width: 100%;
+    position: fixed;
+    color: white;
+    letter-spacing: 0.025em;
+    transition: background-color 0.2s linear;
+    backdrop-filter: blur(40px);
+    background-color: transparent;
+    /* Remova a cor de fundo */
+    opacity: 0.9;
+    /* Ajuste a opacidade para tornar a barra de navegação transparente */
+}
+
+.nav-container.solid-nav {
+    background-color: hsl(110, 100%, 21%);
+    backdrop-filter: blur(40px);
+    background-color: rgb(21, 124, 0);
+    /* Remova a cor de fundo */
+}
+
+.nav-row {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    /* Distribui os elementos ao longo do espaço disponível */
+    align-items: center;
+    /* Alinha os itens verticalmente ao centro */
+}
+
+.nav-logo {
+    display: flex;
+    /* Para alinhar o ícone e o texto horizontalmente */
+    align-items: center;
+    /* Alinha os itens verticalmente ao centro */
+}
+
+.nav-logo img {
+    width: 65px;
+    /* Defina a largura desejada */
+    height: auto;
+    /* Mantém a proporção original da imagem */
+
+}
+
+.nav-logo a {
+    margin-left: 10px;
+    /* Adiciona um espaço entre o ícone e o texto */
+}
+
+.nav-controls {
+    float: right;
+}
+
+.nav-controls a {
+    padding-left: 20px;
+}
+
+.row {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilos adicionais para formatação */
+.numero_e_parametro {
+    font-size: 45px;
+}
+
+.card_umidade .numero_e_parametro {
+    color: green;
+}
+
+.card_temperatura .numero_e_parametro {
+    color: yellow;
+}

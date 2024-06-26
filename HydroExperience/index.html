@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hydro Experience</title>
+  <link rel="stylesheet" type="text/css" href="bootstrap.css" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,700&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="responsive.css" rel="stylesheet" />
+  <link href="inicio.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
+  <!-- Incluir FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+  <div class="hero_area">
+    <div class="nav-container">
+      <div class="nav-row">
+        <div class="nav-logo">
+          <img src="Hydro_Experience.png" alt="Logo">
+          <a href="#" style="font-size: 27px;  ">Hydro Experience</a>
+        </div>
+        <div class="nav-controls">
+          <!-- Botão convertido para link -->
+          <a href="Graphic.html" style="color: black;" class="menu_button">
+            <i class="fas fa-chart-line" style="font-size: 20px;"></i> Gráfico
+          </a>
+          <button class="menu_button"><i class="fas fa-play"></i> Start</button>
+          <button class="menu_button"><i class="fas fa-pause"></i> Pause</button>
+          <button class="menu_button"><i class="fas fa-stop"></i> Stop</button>
+        </div>
+      </div>
+    </div>
+    <section class="slider_section">
+      <div class="col-md-8 offset-md-1">
+        <div class="detail-box">
+          <div class="number"></div>
+          <h1>Hydro <br><span>Experience</span></h1>
+          <p style="color: aliceblue;">
+            Aqui suas plantas ficam mais seguras com nossa implementação.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="cards">
+    <div class="card_umidade">
+      <h1 class="titulo_centralizado">Dados da Umidade ​💧​</h1>
+      <div id="umidade" class="numero_e_parametro">80%</div>
+      <button class="botao_alerta" onclick="sendCommand('1000')">
+        <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+        </svg>
+        <span style="font-size: 13px;" id="alerta">Alerta de Nível de Umidade</span>
+      </button>
+    </div>
+    <div class="card_temperatura">
+      <h1 class="titulo_centralizado">Dados da Temperatura ☀️</h1>
+      <div id="temperatura" class="numero_e_parametro">25°C</div>
+    </div>
+    <div class="card_distancia">
+      <h1 class="titulo_centralizado">Dados da Distância 🚀</h1>
+      <div id="distancia" class="numero_e_parametro">100 cm</div>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+
+</html>
